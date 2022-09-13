@@ -11,7 +11,7 @@ const dragged = {
   el: null,
   class: null,
   index: null
-}
+};
 
 let isPlaying = false;
 let timeInterval = null;
@@ -87,7 +87,7 @@ function shuffle(array) {
 
 // events
 container.addEventListener('dragstart', e => {
-  //console.log(e);
+  console.log(e);
   if (!isPlaying) return;
   const obj = e.target
   dragged.el = obj;
@@ -104,6 +104,7 @@ container.addEventListener('dragover', e => {
 container.addEventListener('drop', e => {
   if (!isPlaying) return;
   //console.log('drop');
+  console.log(e);
   const obj = e.target;
   //console.log({obj});
   //obj만 쓰면 <li data-index="3" draggable="true" class="list4"></li>가 출력되지만
@@ -122,7 +123,7 @@ container.addEventListener('drop', e => {
 
     const droppedIndex = [...obj.parentNode.children].indexOf(obj);
     dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el)
-    isLast ? originPlace.after(obj) : originPlace.before(obj);
+    isLast ? originPlace.after(obj) : originPlace.before(obj); // 어려움 ...
   }
   checkStatus();
 })
